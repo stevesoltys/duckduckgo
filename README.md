@@ -1,4 +1,5 @@
 # DuckDuckGo
+[![Build Status](https://travis-ci.com/stevesoltys/duckduckgo.svg?token=p8s7S7quPerPhARM711E&branch=master)](https://travis-ci.com/stevesoltys/duckduckgo)
 
 An unofficial DuckDuckGo search API.
 
