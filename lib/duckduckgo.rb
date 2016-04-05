@@ -1,5 +1,7 @@
-require "duckduckgo/version"
+require 'duckduckgo/version'
 
-module Duckduckgo
-  # Your code goes here...
+module DuckDuckGo
+
+
+
 end
