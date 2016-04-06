@@ -14,7 +14,7 @@ class TestSearch < Test::Unit::TestCase
   def test_search
 
     assert_nothing_raised do
-      results = DuckDuckGo::search(TEST_SEARCH_PHRASE)
+      results = DuckDuckGo::search(:query => TEST_SEARCH_PHRASE)
 
       assert(!results.empty?, "Searching for '#{TEST_SEARCH_PHRASE}' returned zero results.")
     end

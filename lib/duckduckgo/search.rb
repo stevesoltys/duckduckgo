@@ -13,12 +13,14 @@ module DuckDuckGo
   ##
   # Searches DuckDuckGo for the given query string. This function returns an array of SearchResults.
   #
-  # @param [String] query the query
+  # @param [Hash] hash a hash containing the query string and possibly other configuration settings.
   # @raise [Exception] if there is an error scraping DuckDuckGo for the search results.
-  def self.search(query)
+  def self.search(hash)
+
     results = []
 
-    html = open("#{RESOURCE_URL}#{CGI::escape(query)}")
+    raise 'Hash does not contain a query string.' unless hash.has_key?(:query)
+    html = open("#{RESOURCE_URL}#{CGI::escape(hash[:query])}")
 
     document = Nokogiri::HTML(html)
 

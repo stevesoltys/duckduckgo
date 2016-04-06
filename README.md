@@ -28,7 +28,7 @@ Using this library is very simple. Here's an example:
 
 require 'duckduckgo'
 
-results = DuckDuckGo::search('Apples')
+results = DuckDuckGo::search(:query => 'Apples')
 result = results.first
 
 result.uri
