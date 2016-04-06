@@ -23,7 +23,7 @@ Or install it yourself as:
 
 Using this library is very simple. Here's an example:
 
-```
+```ruby
 #!/usr/bin/env ruby
 
 require 'duckduckgo'
