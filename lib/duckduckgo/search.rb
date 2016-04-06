@@ -13,7 +13,8 @@ module DuckDuckGo
   ##
   # Searches DuckDuckGo for the given query string. This function returns an array of SearchResults.
   #
-  # Exceptions are raised if there is an error scraping DuckDuckGo for the search results.
+  # @param [String] query the query
+  # @raise [Exception] if there is an error scraping DuckDuckGo for the search results.
   def self.search(query)
     results = []
 

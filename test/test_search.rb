@@ -18,7 +18,6 @@ class TestSearch < Test::Unit::TestCase
 
       assert(!results.empty?, "Searching for '#{TEST_SEARCH_PHRASE}' returned zero results.")
     end
-
   end
 
 end
