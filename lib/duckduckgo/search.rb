@@ -10,9 +10,10 @@ module DuckDuckGo
     results = []
 
     html = open("#{RESOURCE_URL}#{CGI::escape(query)}")
+
     document = Nokogiri::HTML(html)
 
-    document.css('.result').each do |result|
+    document.css('#links').each do |result|
       title_element = result.css('.result__a').first
       raise 'Could not find result link element!' if title_element.nil?
 
