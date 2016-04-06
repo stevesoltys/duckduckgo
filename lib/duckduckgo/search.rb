@@ -2,10 +2,18 @@ require 'nokogiri'
 require 'open-uri'
 require 'cgi'
 
+##
+# The DuckDuckGo module.
 module DuckDuckGo
 
+  ##
+  # The suffix for the URL that we visit when querying DuckDuckGo.
   RESOURCE_URL = 'https://duckduckgo.com/html/?q='
 
+  ##
+  # Searches DuckDuckGo for the given query string. This function returns an array of SearchResults.
+  #
+  # Exceptions are raised if there is an error scraping DuckDuckGo for the search results.
   def self.search(query)
     results = []
 
