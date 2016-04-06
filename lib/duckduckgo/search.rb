@@ -19,7 +19,7 @@ module DuckDuckGo
 
     results = []
 
-    raise 'Hash does not contain a query string.' unless hash.has_key?(:query)
+    raise 'Hash does not contain a query string.' if hash[:query].nil?
     html = open("#{RESOURCE_URL}#{CGI::escape(hash[:query])}")
 
     document = Nokogiri::HTML(html)

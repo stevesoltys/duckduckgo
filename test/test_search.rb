@@ -20,7 +20,7 @@ class TestSearch < Minitest::Unit::TestCase
   ##
   # Tests failing of a search that gives a hash with a nil 'query' string.
   def test_nil_search
-    assert_raises(NoMethodError) { DuckDuckGo::search(:query => nil) }
+    assert_raises(RuntimeError) { DuckDuckGo::search(:query => nil) }
   end
 
   ##
