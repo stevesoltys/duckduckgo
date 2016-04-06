@@ -21,13 +21,29 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Using this library is very simple. Here's an example:
+
+```
+#!/usr/bin/env ruby
+
+require 'duckduckgo'
+
+results = DuckDuckGo::search('Apples')
+result = results.first
+
+result.uri
+# => "https://en.wikipedia.org/wiki/Apple"
+
+result.title
+# => "Apple - Wikipedia, the free encyclopedia"
+
+result.description
+# => "The apple tree (Malus domestica) is a deciduous tree in the rose family best known for its sweet, pomaceous fruit, the apple. It is cultivated worldwide as a fruit ..."
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake false` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 ## Contributing
 
