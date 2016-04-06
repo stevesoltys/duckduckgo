@@ -1,7 +1,3 @@
 require 'duckduckgo/version'
-
-module DuckDuckGo
-
-
-
-end
+require 'duckduckgo/result'
+require 'duckduckgo/search'
