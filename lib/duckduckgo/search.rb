@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'open_uri_redirections'
 require 'cgi'
 
 ##
@@ -34,13 +35,16 @@ module DuckDuckGo
       uri = title_element['href']
       raise 'Could not find result URL!' if uri.nil?
 
+      # Follow redirects, since DuckDuckGo often aggregates search results from Yahoo.
+      final_uri = open(uri, :allow_redirections => :safe).base_uri.to_s
+
       description_element = result.css('.result__snippet').first
       raise 'Could not find result description element!' if description_element.nil?
 
       description = description_element.text
       raise 'Could not find result description!' if description.nil?
 
-      results << SearchResult.new(uri, title, description)
+      results << SearchResult.new(final_uri, title, description)
     end
 
     return results
