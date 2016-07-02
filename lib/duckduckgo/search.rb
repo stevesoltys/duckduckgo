@@ -35,8 +35,12 @@ module DuckDuckGo
       uri = title_element['href']
       raise 'Could not find result URL!' if uri.nil?
 
-      # Follow redirects, since DuckDuckGo often aggregates search results from Yahoo.
-      final_uri = open(uri, :allow_redirections => :safe).base_uri.to_s
+      # Attempt to follow redirects, since DuckDuckGo often aggregates search results from Yahoo.
+      begin
+        final_uri = open(uri, :allow_redirections => :all).base_uri.to_s
+      rescue
+        final_uri = uri
+      end
 
       description_element = result.css('.result__snippet').first
       raise 'Could not find result description element!' if description_element.nil?
