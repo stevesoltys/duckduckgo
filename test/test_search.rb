@@ -20,8 +20,8 @@ class TestSearch < Minitest::Unit::TestCase
     assert_operator(results.length, :>, 1)
 
     result = results.first
-    # it shoul be equal to "https://en.wikipedia.org/wiki/Apple"
-    assert_equal(result.uri, "https://en.wikipedia.org/wiki/Apple")
+    # it should have http or https scheme
+    assert(result.uri.start_with?("http://", "https://"))
   end
 
   ##
