@@ -25,7 +25,7 @@ module DuckDuckGo
 
     document = Nokogiri::HTML(html)
 
-    document.css('#links').each do |result|
+    document.css('.results_links').each do |result|
       title_element = result.css('.result__a').first
       raise 'Could not find result link element!' if title_element.nil?
 
@@ -37,7 +37,8 @@ module DuckDuckGo
 
       # Attempt to follow redirects, since DuckDuckGo often aggregates search results from Yahoo.
       begin
-        final_uri = open(uri, :allow_redirections => :all).base_uri.to_s
+        uddg = URI.decode_www_form(uri).to_h["uddg"]
+        final_uri = open(uddg, :allow_redirections => :all).base_uri.to_s
       rescue
         final_uri = uri
       end

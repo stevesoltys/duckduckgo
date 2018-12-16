@@ -14,6 +14,13 @@ class TestSearch < Minitest::Unit::TestCase
   def test_search
     results = DuckDuckGo::search(:query => TEST_SEARCH_PHRASE)
     assert(!results.empty?, "Searching for '#{TEST_SEARCH_PHRASE}' returned zero results.")
+
+    # it should be biggenr than 1
+    assert_operator(results.length, :>, 1)
+
+    result = results.first
+    # it should have http or https scheme
+    assert(result.uri.start_with?("http://", "https://"))
   end
 
   ##
