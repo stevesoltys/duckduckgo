@@ -3,7 +3,7 @@ require 'duckduckgo'
 
 ##
 # A test that will search for a phrase and ensure that no exceptions are raised and that the results are valid.
-class TestSearch < Minitest::Unit::TestCase
+class TestSearch < Minitest::Test
 
   ##
   # The phrase that we will be searching for in this test.
