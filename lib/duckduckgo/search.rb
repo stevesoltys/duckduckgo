@@ -9,7 +9,7 @@ module DuckDuckGo
 
   ##
   # The suffix for the URL that we visit when querying DuckDuckGo.
-  RESOURCE_URL = 'https://duckduckgo.com/html/?q='
+  RESOURCE_URL = 'https://html.duckduckgo.com/html/?q='
 
   ##
   # Searches DuckDuckGo for the given query string. This function returns an array of SearchResults.
@@ -21,7 +21,7 @@ module DuckDuckGo
     results = []
 
     raise 'Hash does not contain a query string.' if hash[:query].nil?
-    html = open("#{RESOURCE_URL}#{CGI::escape(hash[:query])}")
+    html = URI.open("#{RESOURCE_URL}#{CGI::escape(hash[:query])}")
 
     document = Nokogiri::HTML(html)
 
