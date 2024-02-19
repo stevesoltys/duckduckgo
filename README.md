@@ -1,5 +1,4 @@
 # DuckDuckGo
-[![Build Status](https://travis-ci.org/stevesoltys/duckduckgo.svg?branch=master)](https://travis-ci.org/stevesoltys/duckduckgo)
 
 An unofficial DuckDuckGo search API.
 
