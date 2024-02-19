@@ -18,9 +18,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.16.1'
-  spec.add_development_dependency 'minitest', '~> 5.11.3'
+  spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'minitest'
   spec.add_development_dependency 'rake', '~> 12.3.1'
-  spec.add_dependency 'nokogiri', '~> 1.8.2'
+  spec.add_dependency 'nokogiri'
   spec.add_dependency 'open_uri_redirections', '~> 0.2.1'
 end

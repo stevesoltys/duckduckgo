@@ -3,7 +3,7 @@ require 'duckduckgo'
 
 ##
 # A test that will search for a phrase and ensure that no exceptions are raised and that the results are valid.
-class TestSearch < Minitest::Unit::TestCase
+class TestSearch < Minitest::Test
 
   ##
   # The phrase that we will be searching for in this test.
@@ -15,12 +15,13 @@ class TestSearch < Minitest::Unit::TestCase
     results = DuckDuckGo::search(:query => TEST_SEARCH_PHRASE)
     assert(!results.empty?, "Searching for '#{TEST_SEARCH_PHRASE}' returned zero results.")
 
-    # it should be biggenr than 1
+    # it should be bigger than 1
     assert_operator(results.length, :>, 1)
 
     result = results.first
-    # it should have http or https scheme
-    assert(result.uri.start_with?("http://", "https://"))
+
+    # it should have http or https scheme, or start with '//duckduckgo.com'
+    assert(result.uri.start_with?("http://", "https://", "//duckduckgo.com"))
   end
 
   ##

@@ -21,7 +21,7 @@ module DuckDuckGo
     results = []
 
     raise 'Hash does not contain a query string.' if hash[:query].nil?
-    html = open("#{RESOURCE_URL}#{CGI::escape(hash[:query])}")
+    html = URI.open("#{RESOURCE_URL}#{CGI::escape(hash[:query])}")
 
     document = Nokogiri::HTML(html)
 
@@ -35,21 +35,13 @@ module DuckDuckGo
       uri = title_element['href']
       raise 'Could not find result URL!' if uri.nil?
 
-      # Attempt to follow redirects, since DuckDuckGo often aggregates search results from Yahoo.
-      begin
-        uddg = URI.decode_www_form(uri).to_h["uddg"]
-        final_uri = open(uddg, :allow_redirections => :all).base_uri.to_s
-      rescue
-        final_uri = uri
-      end
-
       description_element = result.css('.result__snippet').first
       raise 'Could not find result description element!' if description_element.nil?
 
       description = description_element.text
       raise 'Could not find result description!' if description.nil?
 
-      results << SearchResult.new(final_uri, title, description)
+      results << SearchResult.new(uri, title, description)
     end
 
     return results
